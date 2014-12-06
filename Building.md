@@ -12,7 +12,7 @@ Or directly packaged with different package managers:
 
 # Getting the source
 ## Source package
-To retrieve the source package go to the [downloads](https://googledrive.com/host/0B3fBvzttpiiSbl9XZGZzQ05hZkU/) page and download the file named:
+To retrieve the source package go to the [downloads](https://github.com/libyal/libscca/releases) page and download the file named:
 ```
 libscca-alpha-<version>.tar.gz
 ```
@@ -28,7 +28,19 @@ libscca-<version>
 ```
 
 ## Git
-To retrieve the source from the git repository make sure to install: git, aclocal, autoconf, automake, autopoint, gettextize and libtoolize.
+**Note that the git repository holds the development version of the source code.**
+
+**If you are not developing it is recommended that you download a source package instead.**
+
+To retrieve the source from the git repository make sure to install:
+* git
+* aclocal
+* autoconf
+* automake
+* autopoint or gettextize
+* libtoolize
+* pkg-config
+
 
 To download and prepare the source for building run:
 ```
@@ -38,7 +50,14 @@ cd libscca/
 ./autogen.sh
 ```
 
-**Note that the source from the git repository will not work without synchronizing the library dependencies "./synclibs.sh" and having the autotools generate the necessary files "./autogen.sh".**
+The source from the git repository will not work without synchronizing the library dependencies "./synclibs.sh" and having the autotools generate the necessary files "./autogen.sh".
+
+### Mac OS X
+On Mac OS X the XCode command line tools no longer provide the autotools you can obtain them e.g. via [MacPorts](https://www.macports.org/).
+Install the following packages:
+```
+sudo port install autoconf automake gettext libtool pkgconfig
+```
 
 # Using GNU Compiler Collection (GCC)
 
@@ -103,6 +122,7 @@ If you want to use Cygwin to build libscca make sure to have the following packa
 * libiconv
 * libtool
 * make
+* pkg-config
 
 
 After following the GNU Compiler Collection (GCC) build instructions you should end up with the following DLL:
@@ -118,14 +138,13 @@ sccatools/.libs/sccainfo.exe
 
 ### Using the DLL
 Make sure you use define LIBSCCA_DLL_IMPORT before including <libscca.h>.
-* **TODO describe dependencies**
+
+To be able to use the DLL on other systems than the build system you'll also need to provide:
+* cygwin1.dll
 
 ## Mac OS X
 ### Universal binary
 With XCode you can build a Mac OS X universal binary to run on multiple architectures. The supported architectures and exact command differs per version of Mac OS X.
-
-### libtoolize
-If you find that libtoolize is missing use glibtoolize instead.
 
 #### Mac OS X 10.4
 E.g. on Mac OS X 10.4 to build an PPC and Intel 32-bit multi binary, run the following commands:
@@ -156,6 +175,9 @@ LDFLAGS="-Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/Ma
 make
 make install
 ```
+
+### libtoolize
+If you find that libtoolize is missing use glibtoolize instead.
 
 ## Sun Solaris
 To build libscca on Sun Solaris make sure that /usr/ccs/bin and /usr/sfw/bin are defined in the PATH environment variable.
@@ -270,7 +292,8 @@ make
 ## Using the DLL
 Make sure you use define LIBSCCA_DLL_IMPORT before including <libscca.h>.
 
-* **TODO describe dependencies**
+To be able to use the DLL on other systems than the build system you'll also need to provide:
+* libgcc_s_dw2-1.dll (or equivalent)
 
 ## Troubleshooting
 While running make I get an error similar to the following:
@@ -346,7 +369,8 @@ msbuild msvscpp\libscca.sln /p:Configuration=Release;Platform=Win32
 ## Using the DLL
 Make sure you use define LIBSCCA_DLL_IMPORT before including <libscca.h>.
 
-On other systems than the build system you'll also need to install the Visual Studio Redistributable package for the DLL to run.
+To be able to use the DLL on other systems than the build system you'll also need to provide:
+* the Microsoft Visual C++ Run-Time DLL (part of the Visual C++ Redistributable package)
 
 ## 64-bit with Microsoft Visual Studio express
 To build a 64-bit version of libscca with Microsoft Visual Studio
