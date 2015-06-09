@@ -1,11 +1,13 @@
 # Introduction
 The libscca source code can be build with different compilers:
+
 * Using GNU Compiler Collection (GCC)
   * Using Cygwin
 * Using Minimalist GNU for Windows (MinGW)
 * Using Microsoft Visual Studio
 
 Or directly packaged with different package managers:
+
 * Using Debian package tools (DEB)
 * Using RedHat package tools (RPM)
 * Using Mac OS X pkgbuild
@@ -33,6 +35,7 @@ libscca-<version>
 **If you are not developing it is recommended that you download a source package instead.**
 
 To retrieve the source from the git repository make sure to install:
+
 * git
 * aclocal
 * autoconf
@@ -59,9 +62,21 @@ Install the following packages:
 sudo port install autoconf automake gettext libtool pkgconfig
 ```
 
+### Microsoft Visual Studio
+Since Microsoft Visual Studio does not come with a Unix shell or equivalent you'll need to use the Windows PowerShell scripts instead:
+```
+git clone https://github.com/libyal/libscca.git
+cd libscca\
+.\synclibs.ps1
+.\autogen.ps1
+```
+
+Check "appveyor.yml" to make sure there are additional PowerShell scripts you need to run.
+
 # Using GNU Compiler Collection (GCC)
 
 Before you build the libscca source code using the GNU Compiler Collection (GCC) you'll need to have compilation and build tools installed.
+
 * On a Linux system make sure you have build-essential (Debian-based) or the Development Tools (RedHat-based) packages installed.
 * On a Mac OS X system make sure you have XCode (with command line tools) or MacPorts (or equivalent) installed.
 
@@ -104,6 +119,7 @@ To make a static library add --enable-shared=no to configure, .e.g:
 
 ## Static executables
 Some distributions provide separate packages for static versions of libraries. Make sure you have a static versions of:
+
 * glibc
 
 
@@ -114,6 +130,7 @@ To make static executables add --enable-static-executables=yes to configure, .e.
 
 ## Cygwin
 If you want to use Cygwin to build libscca make sure to have the following packages installed:
+
 * autoconf
 * automake
 * binutils
@@ -140,6 +157,7 @@ sccatools/.libs/sccainfo.exe
 Make sure you use define LIBSCCA_DLL_IMPORT before including <libscca.h>.
 
 To be able to use the DLL on other systems than the build system you'll also need to provide:
+
 * cygwin1.dll
 
 ## Mac OS X
@@ -293,6 +311,7 @@ make
 Make sure you use define LIBSCCA_DLL_IMPORT before including <libscca.h>.
 
 To be able to use the DLL on other systems than the build system you'll also need to provide:
+
 * libgcc_s_dw2-1.dll (or equivalent)
 
 ## Troubleshooting
@@ -379,6 +398,7 @@ express you'll need at least the 2010 version.
 ### Microsoft Visual Studio 2010
 First make sure to enabling 64-bit compilation support on Microsoft Visual
 Studio 2010 express. Since this can be a tedious process, some relevant links:
+
 * http://msdn.microsoft.com/en-us/library/vstudio/9yb4317s(v=vs.100).aspx
 * http://support.microsoft.com/kb/2519277
 
@@ -390,10 +410,10 @@ Configuration manager -> Active solution platform
 ```
 
 Select "```<New>```"
+
 * Type or select the new platform: "x64"
 * Copy settings from: "Win32"
 * Create new project platforms: enabled
-
 
 Additionally for every project change:
 ```
