@@ -24,6 +24,7 @@ tests/input/basic
 ## Test profiles
 There are also multiple test profiles:
 * libscca
+* pyscca
 * sccainfo
 
 

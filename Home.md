@@ -5,11 +5,13 @@ Project information:
 * Status: alpha
 * Licence: LGPLv3+
 
+Work in progress:
+
+* Python 3 support
+
 Planned:
 
-* Python bindings
 * Multi-threading support
-* Python 3 support
 
 For more information see:
 

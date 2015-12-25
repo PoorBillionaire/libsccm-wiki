@@ -128,6 +128,19 @@ To make static executables add --enable-static-executables=yes to configure, .e.
 ./configure --enable-static-executables=yes
 ```
 
+## Python-bindings
+To compile the Python-bindings you'll need the Python development files.
+
+Make sure that on:
+
+* a Linux machine, you have python-dev (Debian-based) or python-devel (RedHat-based) installed.
+* a Mac OS X machine, XCode if you're using a different Python source tree see Mac OS X notes below.
+
+Adding --enable-python when running ./configure will enable the Python-bindings to be build.
+```
+./configure --enable-python
+```
+
 ## Cygwin
 If you want to use Cygwin to build libscca make sure to have the following packages installed:
 
@@ -196,6 +209,25 @@ make install
 
 ### libtoolize
 If you find that libtoolize is missing use glibtoolize instead.
+
+### Python-bindings
+Mac OS X comes with multiple platform specific build Python versions. If you install a different version of Python on Mac OS X make sure that when building and running the Python-bindings you're using the correct version otherwise it will likely result in one of the following errors:
+```
+Fatal Python error: Interpreter not initialized (version mismatch?)
+```
+
+```
+Fatal Python error: PyThreadState_Get: no current thread
+```
+
+To build against a specific version you can tell configure where to look:
+```
+CFLAGS=-I/Library/Frameworks/Python.framework/Versions/2.7/include/ \
+LDFLAGS=-L/Library/Frameworks/Python.framework/Versions/2.7/lib/ \
+./configure --enable-python --with-pyprefix
+```
+
+Adding --with-pyprefix tells configure to use Python to determine where to install the Python-bindings.
 
 ## Sun Solaris
 To build libscca on Sun Solaris make sure that /usr/ccs/bin and /usr/sfw/bin are defined in the PATH environment variable.
@@ -352,6 +384,20 @@ Add the following definitions:
 #define HAVE_DEBUG_OUTPUT       1
 ```
 
+## Python-bindings
+To compile the pyscca Python-bindings you'll need the Python development files which are part of the Python.org windows installer package.
+
+The Microsoft Visual Studio files are configured to look in:
+```
+C:\Python2.7\
+```
+
+If you want to have the Python development files in a different location you'll have to change the pyscca Microsoft Visual Studio settings.
+
+Note that the VSDebug build of the Python-bindings will fail since the Python development files do not come with python2.7_d.lib.
+
+If you do not intend to build the Python-bindings you can safely ignore build errors regarding: pyscca.
+
 ## Building
 Open the file:
 ```
@@ -437,7 +483,7 @@ sh msvscpp/scripts/vs2010_x64.sh
 
 To build libscca using the Debian package tools make sure you have the following packages installed:
 ```
-sudo apt-get install build-essential debhelper fakeroot autotools-dev []
+sudo apt-get install build-essential debhelper fakeroot autotools-dev python-dev
 ```
 
 If you downloaded the source using git make sure to run ./configure at least once to generate the dpkg packaging files.
@@ -452,6 +498,7 @@ This will create the following files in the parent directory:
 ```
 libscca_<version>-1_<arch>.deb
 libscca-dev_<version>-1_<arch>.deb
+libscca-python_<version>-1_<arch>.deb
 libscca-tools_<version>-1_<arch>.deb
 ```
 
@@ -463,7 +510,7 @@ sudo dpkg -i libscca_<version>-1_<arch>.deb
 # Using RedHat package tools (RPM)
 To build libscca using the RedHat package tools make sure you have the following packages installed:
 ```
-yum install rpm-build []
+yum install rpm-build python-devel
 ```
 
 To build:
@@ -476,6 +523,7 @@ This will create the following files in the rpmbuild directory:
 ```
 ~/rpmbuild/RPMS/<arch>/libscca-<version>-1.<arch>.rpm
 ~/rpmbuild/RPMS/<arch>/libscca-devel-<version>-1.<arch>.rpm
+~/rpmbuild/RPMS/<arch>/libscca-python-<version>-1.<arch>.rpm
 ~/rpmbuild/RPMS/<arch>/libscca-tools-<version>-1.<arch>.rpm
 ~/rpmbuild/SRPMS/libscca-<version>-1.src.rpm
 ```
@@ -492,7 +540,7 @@ The following instructions show how to build libscca.pkg and libscca.dmg from th
 
 First build libscca with Python-bindings:
 ```
-./configure --prefix=/usr
+./configure --prefix=/usr --enable-python --with-pyprefix
 make
 ```
 
