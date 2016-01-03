@@ -6,39 +6,31 @@ This page describes a few snippets of Python code which can be used to get up an
 
 The remaining documentation assumes you have [built](https://github.com/libyal/libscca/wiki/Building) and imported the pyscca module in to your script by adding the ```import``` declaration above your Python code:
 
-```
-import pyscca
-```
+```import pyscca```
 
 ## Introspection
 
 General assistance can be obtained by utilizing Python's builtin introspection features:
 
 
->>>help(pyscca)
 
 ```
+>>>help(pyscca)
+
 CLASSES
     __builtin__.object
         file
         file_metrics
-        volume_information
-    
-    class file(__builtin__.object)
-     |  pyscca file object (wraps libscca_file_t)
-     |  
-     |  Methods defined here:
-     |  
-     |  __init__(...)
-     |      x.__init__(...) initializes x; see help(type(x)) for signature
+        volume_information    
 ...
 ...
 ...
 
-````
-
->>>help(pyscca.file)
 ```
+
+```
+>>>help(pyscca.file)
+
 class file(__builtin__.object)
  |  pyscca file object (wraps libscca_file_t)
  |  
@@ -52,6 +44,9 @@ class file(__builtin__.object)
  |      
  |      Closes a file.
 
+...
+...
+...
 ```
 
 ## Get version
