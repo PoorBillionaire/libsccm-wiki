@@ -4,15 +4,13 @@ This page describes a few snippets of Python code which can be used to get up an
 
 ## Import
 
-The remaining documentation assumes you have [built](https://github.com/libyal/libscca/wiki/Building) and imported the pyscca module in to your script by adding the ```import``` declaration above your Python code:
+The remainder of this page assumes you have [built](https://github.com/libyal/libscca/wiki/Building) and imported the pyscca module in to your script, using the ```import``` declaration above your Python code:
 
 ```import pyscca```
 
 ## Introspection
 
 General assistance can be obtained by utilizing Python's builtin introspection features:
-
-
 
 ```
 >>>help(pyscca)
@@ -50,11 +48,16 @@ class file(__builtin__.object)
 ```
 
 ## Get version
+
+pyscca utilizes date-based version identifiers; the get_version() method returns a unicode object:
+
 ```
 pyscca.get_version()
+u'20151226'
 ```
 
 ## Open file
+
 ```
 scca_file = pyscca.file()
 
@@ -77,9 +80,3 @@ scca_file.close()
 ```
 
 The explicit call to scca_file.close() is not required.
-
-## Also see
-```
-help(pyscca)
-help(pyscca.file)
-```
