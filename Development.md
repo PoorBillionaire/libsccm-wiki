@@ -4,7 +4,7 @@ This page describes a few snippets of Python code which can be used to get up an
 
 ## Import
 
-The remainder of this page assumes you have [built](https://github.com/libyal/libscca/wiki/Building) and imported the pyscca module in to your script, using the ```import``` declaration above your Python code:
+The remainder of this page assumes you have [built](https://github.com/libyal/libscca/wiki/Building) pyscca locally, and have imported the pyscca module into your script, using the ```import``` declaration above your Python code:
 
 ```import pyscca```
 
