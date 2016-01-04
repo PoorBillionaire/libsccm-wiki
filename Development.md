@@ -83,6 +83,29 @@ LS.EXE
 LS.EXE
 5
 ```
-'''
 
 **The explicit call to scca_file.close() is not required.**
+
+# Filenames
+
+The ```filenames``` object lists the resources which the executable in question loaded during its first 10 seconds of execution. This is an iterable object:
+
+```
+>>> for i in scca.filenames:
+...     print i
+... 
+\VOLUME{01d11b57aa4f5b10-e8aabf9f}\WINDOWS\SYSTEM32\NTDLL.DLL
+\VOLUME{01d11b57aa4f5b10-e8aabf9f}\WINDOWS\SYSTEM32\KERNEL32.DLL
+\VOLUME{01d11b57aa4f5b10-e8aabf9f}\WINDOWS\SYSTEM32\KERNELBASE.DLL
+\VOLUME{01d11b57aa4f5b10-e8aabf9f}\WINDOWS\SYSTEM32\LOCALE.NLS
+...
+...
+...
+```
+
+Additionally, a bit of meta related to the filenames structure is available via the ```number_of_filenames``` attribute:
+
+```
+>>> print scca.number_of_filenames
+25
+```
