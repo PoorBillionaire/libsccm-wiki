@@ -116,6 +116,12 @@ Obtain more help by utilizing introspection functionality on the pyscca object i
 
 ```
 >>> dir(scca)
-['__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'close', 'executable_filename', 'file_metrics_entries', 'filenames', 'format_version', 'get_executable_filename', 'get_file_metrics_entry', 'get_filename', 'get_format_version', 'get_last_run_time', 'get_last_run_time_as_integer', 'get_number_of_file_metrics_entries', 'get_number_of_filenames', 'get_number_of_volumes', 'get_prefetch_hash', 'get_run_count', 'get_volume_information', 'number_of_file_metrics_entries', 'number_of_filenames', 'number_of_volumes', 'open', 'open_file_object', 'prefetch_hash', 'run_count', 'signal_abort', 'volumes']
+['__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__new__',
+'__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'close',
+'executable_filename', 'file_metrics_entries', 'filenames', 'format_version', 'get_executable_filename',
+'get_file_metrics_entry', 'get_filename', 'get_format_version', 'get_last_run_time', 'get_last_run_time_as_integer',
+'get_number_of_file_metrics_entries', 'get_number_of_filenames', 'get_number_of_volumes', 'get_prefetch_hash',
+'get_run_count', 'get_volume_information', 'number_of_file_metrics_entries', 'number_of_filenames', 'number_of_volumes',
+'open', 'open_file_object', 'prefetch_hash', 'run_count', 'signal_abort', 'volumes']
 
 ```
