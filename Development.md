@@ -70,7 +70,7 @@ LS.EXE
 5
 ```
 
-**The explicit call to scca_file.close() is not required.**
+**The explicit call to scca.close() is not required.**
 
 ## Open File Object
 
@@ -84,7 +84,7 @@ LS.EXE
 5
 ```
 
-**The explicit call to scca_file.close() is not required.**
+**The explicit call to scca.close() is not required.**
 
 # Filenames
 
