@@ -1,4 +1,4 @@
-# Python development
+# Python Development
 
 This page describes a few snippets of Python code which can be used to get up and running with pyscca quickly.
 
@@ -47,7 +47,7 @@ class file(__builtin__.object)
 ...
 ```
 
-## Get version
+## Get Version
 
 pyscca utilizes date-based version identifiers; the get_version() method returns a unicode object:
 
@@ -56,27 +56,33 @@ pyscca.get_version()
 u'20151226'
 ```
 
-## Open file
+## Open File
+
+By utilizing the open() and open_file_object() methods, the Developer creates a pyscca.file() object which serves as the entry point to various Prefetch file attributes. Instantiate this object like so:
 
 ```
-scca_file = pyscca.file()
+>>> scca = pyscca.open("LS.EXE-4B79138E.pf")
 
-scca_file.open("CMD.EXE-087B4001.pf")
+>>> print scca.get_executable_filename()
+LS.EXE
 
-scca_file.close()
+>>> print scca.run_count
+5
 ```
 
-The explicit call to scca_file.close() is not required.
+**The explicit call to scca_file.close() is not required.**
 
-## Open file using a file-like object
+## Open File Object
+
 ```
-file_object = open("CMD.EXE-087B4001.pf", "rb")
-
-scca_file = pyscca.file()
-
-scca_file.open_file_object(file_object)
-
-scca_file.close()
+>>> with open("/home/adam/Prefetch_10/LS.EXE-4B79138E.pf", "rb") as f:
+...     scca = pyscca.open_file_object(f)
+...     print scca.get_executable_filename()
+...     print scca.run_count
+... 
+LS.EXE
+5
 ```
+'''
 
-The explicit call to scca_file.close() is not required.
+**The explicit call to scca_file.close() is not required.**
