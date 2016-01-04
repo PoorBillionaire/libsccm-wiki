@@ -75,7 +75,7 @@ LS.EXE
 ## Open File Object
 
 ```
->>> with open("/home/adam/Prefetch_10/LS.EXE-4B79138E.pf", "rb") as f:
+>>> with open("LS.EXE-4B79138E.pf", "rb") as f:
 ...     scca = pyscca.open_file_object(f)
 ...     print scca.get_executable_filename()
 ...     print scca.run_count
